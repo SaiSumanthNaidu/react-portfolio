@@ -54,9 +54,9 @@ function App() {
       />
 
       <Hero
-        name="Sai Sumanth"
-        role="Full Stack Developer"
-        experience="Building modern web applications using Python, Django, JavaScript, and React."
+          name="Bandaru Sai Sumanth"
+          role="Python Full Stack Developer"
+          experience="Passionate Full Stack Developer specializing in Python, Django, React, and modern web technologies, building scalable and user-friendly applications."
       />
 
       <Stats />

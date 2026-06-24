@@ -3,6 +3,7 @@ import profile from '../../assets/profile.png'
 import { motion } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
 import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
+import BackgroundShapes from '../BackgroundShapes/BackgroundShapes'
 
 function Hero({ name, role, experience }) {
     return (
@@ -14,6 +15,8 @@ function Hero({ name, role, experience }) {
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
         >
+            <BackgroundShapes />
+
             <motion.div
                 className="hero-content"
                 initial={{ x: -80, opacity: 0 }}
@@ -26,11 +29,11 @@ function Hero({ name, role, experience }) {
 
                 <TypeAnimation
                     sequence={[
-                        'Full Stack Developer',
+                        'Python Full Stack Developer',
                         2000,
                         'React Developer',
                         2000,
-                        'Python Developer',
+                        'Django Developer',
                         2000,
                     ]}
                     wrapper="h2"

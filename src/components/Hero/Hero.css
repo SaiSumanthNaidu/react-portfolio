@@ -22,6 +22,7 @@
 .hero-content,
 .hero-image {
     position: relative;
+    z-index: 2;
 }
 
 .hero-content {
@@ -34,8 +35,8 @@
 }
 
 .hero h1 {
-    font-size: 60px;
-    margin-bottom: 15px;
+    font-size: clamp(48px, 6vw, 60px);
+    line-height: 1.1;
 }
 
 .typing {
@@ -74,10 +75,11 @@
 }
 
 .hero-buttons button:hover {
-    transform: translateY(-5px);
+    transform: translateY(-4px);
 
     box-shadow:
-        0 10px 25px rgba(37,99,235,0.4);
+        0 0 20px rgba(37,99,235,0.4),
+        0 10px 25px rgba(37,99,235,0.3);
 }
 
 /* Social Icons */
@@ -131,23 +133,28 @@
     border: 5px solid white;
 
     box-shadow:
-        0 10px 30px rgba(0,0,0,0.2);
+        0 0 25px rgba(37, 99, 235, 0.25),
+        0 15px 40px rgba(0,0,0,0.2);
 
-    animation: float 4s ease-in-out infinite;
+    animation:
+        float 4s ease-in-out infinite,
+        glow 4s ease-in-out infinite;
 }
 
-@keyframes float {
-
+@keyframes glow {
     0% {
-        transform: translateY(0px);
+        box-shadow:
+            0 0 20px rgba(37,99,235,0.2);
     }
 
     50% {
-        transform: translateY(-15px);
+        box-shadow:
+            0 0 40px rgba(37,99,235,0.45);
     }
 
     100% {
-        transform: translateY(0px);
+        box-shadow:
+            0 0 20px rgba(37,99,235,0.2);
     }
 }
 

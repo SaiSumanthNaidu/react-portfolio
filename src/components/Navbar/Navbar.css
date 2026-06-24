@@ -50,6 +50,15 @@
     color: #38bdf8;
 }
 
+.nav-links a.active {
+    color: #2563eb;
+    font-weight: 600;
+}
+
+.nav-links a.active::after {
+    width: 100%;
+}
+
 .menu-icon {
     display: none;
     font-size: 32px;
