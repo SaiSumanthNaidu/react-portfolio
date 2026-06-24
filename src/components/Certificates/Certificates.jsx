@@ -1,24 +1,50 @@
 import './Certificates.css'
 import { motion } from 'framer-motion'
-import { FaCertificate } from 'react-icons/fa'
+import {
+    FaCertificate,
+    FaBriefcase,
+    FaTools,
+    FaChartBar,
+    FaFileExcel
+} from 'react-icons/fa'
 
 function Certificates() {
 
     const certificates = [
 
         {
+            icon: <FaTools />,
             title: "AutoCAD Certification",
-            organization: "NSIC"
+            organization: "NSIC",
+            year: "2023"
         },
 
         {
+            icon: <FaBriefcase />,
             title: "Associate Engineer Internship",
-            organization: "TechIRavan"
+            organization: "TechIRavan",
+            year: "2025 - 2026"
         },
 
         {
+            icon: <FaCertificate />,
             title: "Solar Internship",
-            organization: "Mahathi Engineering Industries"
+            organization: "Mahathi Engineering Industries",
+            year: "2021 - 2022"
+        },
+
+        {
+            icon: <FaFileExcel />,
+            title: "Advanced Excel, PowerPoint & Word",
+            organization: "ExcelR",
+            year: "2022"
+        },
+
+        {
+            icon: <FaChartBar />,
+            title: "Power BI Micro Course",
+            organization: "SkillCourse",
+            year: "2026"
         }
 
     ]
@@ -26,7 +52,7 @@ function Certificates() {
     return (
         <section id="certificates" className="certificates">
 
-            <h2>Certificates</h2>
+            <h2>Certificates & Internships</h2>
 
             <div className="certificate-container">
 
@@ -39,19 +65,24 @@ function Certificates() {
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{
                             duration: 0.5,
-                            delay: index * 0.2
+                            delay: index * 0.15
                         }}
-                        viewport={{ once: false }}
+                        viewport={{ once: true }}
                         whileHover={{
                             y: -10,
                             scale: 1.03
                         }}
                     >
-                        <FaCertificate className="certificate-icon" />
+
+                        <div className="certificate-icon">
+                            {certificate.icon}
+                        </div>
 
                         <h3>{certificate.title}</h3>
 
                         <p>{certificate.organization}</p>
+
+                        <span>{certificate.year}</span>
 
                     </motion.div>
 

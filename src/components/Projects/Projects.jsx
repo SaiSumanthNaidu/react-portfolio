@@ -4,12 +4,22 @@ import { useState } from 'react'
 
 function Projects() {
 
+    const [filter, setFilter] = useState("All")
     const [selectedProject, setSelectedProject] = useState(null)
 
     const projects = [
 
         {
+            title: "React Portfolio",
+            category: "Web Apps",
+            description: "Modern responsive portfolio built using React JS, Framer Motion and dark mode support.",
+            tech: "React, JavaScript",
+            github: "https://github.com/SaiSumanthNaidu/react-portfolio"
+        },
+
+        {
             title: "WeatherSphere Pro",
+            category: "Web Apps",
             description: "Modern weather forecasting application with live weather data and forecasts.",
             tech: "HTML, CSS, JavaScript",
             github: "https://github.com/SaiSumanthNaidu/WeatherSphere-Pro"
@@ -17,6 +27,7 @@ function Projects() {
 
         {
             title: "Resume Builder Pro",
+            category: "Web Apps",
             description: "Build and download professional resumes with multiple templates.",
             tech: "Flask, SQLite",
             github: "https://github.com/SaiSumanthNaidu/resume-builder-pro"
@@ -24,19 +35,52 @@ function Projects() {
 
         {
             title: "DocuMindAI",
-            description: "AI-powered OCR document extraction system using Django and Tesseract.",
-            tech: "Django, OCR",
+            category: "AI Projects",
+            description: "AI-powered OCR document extraction and resume analysis platform.",
+            tech: "Django, OCR, Gemini AI",
             github: "https://github.com/SaiSumanthNaidu/DocuMindAI"
         },
 
         {
             title: "Task Manager API",
+            category: "APIs",
             description: "REST API for task management using Django REST Framework.",
-            tech: "Django REST Framework",
+            tech: "DRF",
             github: "https://github.com/SaiSumanthNaidu/task-manager-api"
+        },
+
+        {
+            title: "Authentication API JWT",
+            category: "APIs",
+            description: "JWT Authentication API built using Django REST Framework.",
+            tech: "DRF, JWT",
+            github: "https://github.com/SaiSumanthNaidu/authentication-api-jwt"
+        },
+
+        {
+            title: "CyberThreatProfiler",
+            category: "Security",
+            description: "Cyber threat identification and profiling system using NLP techniques.",
+            tech: "Python, NLP",
+            github: "https://github.com/SaiSumanthNaidu/CyberThreatProfiler"
+        },
+
+        {
+            title: "Scientific Calculator",
+            category: "Python",
+            description: "Advanced scientific calculator with history tracking and mathematical operations.",
+            tech: "Python",
+            github: "https://github.com/SaiSumanthNaidu/python-scientific-calculator-with-history"
         }
 
     ]
+
+    const filteredProjects =
+        filter === "All"
+            ? projects
+            : projects.filter(
+                project => project.category === filter
+            )
 
     return (
         <section
@@ -47,9 +91,55 @@ function Projects() {
 
             <h2>My Projects</h2>
 
+            <div className="project-filters">
+
+                <button
+                    className={filter === "All" ? "active-filter" : ""}
+                    onClick={() => setFilter("All")}
+                >
+                    All
+                </button>
+
+                <button
+                    className={filter === "Web Apps" ? "active-filter" : ""}
+                    onClick={() => setFilter("Web Apps")}
+                >
+                    Web Apps
+                </button>
+
+                <button
+                    className={filter === "AI Projects" ? "active-filter" : ""}
+                    onClick={() => setFilter("AI Projects")}
+                >
+                    AI
+                </button>
+
+                <button
+                    className={filter === "APIs" ? "active-filter" : ""}
+                    onClick={() => setFilter("APIs")}
+                >
+                    APIs
+                </button>
+
+                <button
+                    className={filter === "Security" ? "active-filter" : ""}
+                    onClick={() => setFilter("Security")}
+                >
+                    Security
+                </button>
+
+                <button
+                    className={filter === "Python" ? "active-filter" : ""}
+                    onClick={() => setFilter("Python")}
+                >
+                    Python
+                </button>
+
+            </div>
+
             <div className="project-container">
 
-                {projects.map((project, index) => (
+                {filteredProjects.map((project, index) => (
 
                     <motion.div
                         key={index}
@@ -100,7 +190,11 @@ function Projects() {
                     onClick={() => setSelectedProject(null)}
                 >
 
-                    <div className="project-modal">
+                    <div
+                        className="project-modal"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+
                         <h2>{selectedProject.title}</h2>
 
                         <p>{selectedProject.description}</p>
@@ -124,6 +218,7 @@ function Projects() {
                         >
                             Close
                         </button>
+
                     </div>
 
                 </div>
