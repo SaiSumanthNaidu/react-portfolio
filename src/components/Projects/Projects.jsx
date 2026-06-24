@@ -1,9 +1,13 @@
 import './Projects.css'
-import { motion } from "framer-motion"
+import { motion } from 'framer-motion'
+import { useState } from 'react'
 
 function Projects() {
 
+    const [selectedProject, setSelectedProject] = useState(null)
+
     const projects = [
+
         {
             title: "WeatherSphere Pro",
             description: "Modern weather forecasting application with live weather data and forecasts.",
@@ -31,8 +35,8 @@ function Projects() {
             tech: "Django REST Framework",
             github: "https://github.com/SaiSumanthNaidu/task-manager-api"
         }
+
     ]
-    
 
     return (
         <section
@@ -45,48 +49,86 @@ function Projects() {
 
             <div className="project-container">
 
-                {
-                    projects.map((project, index) => (
+                {projects.map((project, index) => (
 
-                        <motion.div
-                            key={index}
-                            className="project-card"
-                            initial={{ opacity: 0, y: 50 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            whileHover={{
-                                y: -10,
-                                scale: 1.03
-                            }}
-                            transition={{
-                                duration: 0.4,
-                                delay: index * 0.15
-                            }}
+                    <motion.div
+                        key={index}
+                        className="project-card"
+                        onClick={() => setSelectedProject(project)}
+                        initial={{ opacity: 0, y: 50 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        whileHover={{
+                            y: -10,
+                            scale: 1.03
+                        }}
+                        transition={{
+                            duration: 0.4,
+                            delay: index * 0.15
+                        }}
+                    >
+
+                        <h3>{project.title}</h3>
+
+                        <p>{project.description}</p>
+
+                        <span>{project.tech}</span>
+
+                        <br />
+                        <br />
+
+                        <a
+                            href={project.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="project-btn"
+                            onClick={(e) => e.stopPropagation()}
                         >
+                            GitHub
+                        </a>
 
-                            <h3>{project.title}</h3>
+                    </motion.div>
 
-                            <p>{project.description}</p>
-
-                            <span>{project.tech}</span>
-
-                            <br />
-                            <br />
-
-                            <a
-                                href={project.github}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="project-btn"
-                            >
-                                View Code
-                            </a>
-
-                        </motion.div>
-                    ))
-                }
+                ))}
 
             </div>
+
+            {selectedProject && (
+
+                <div
+                    className="project-modal-overlay"
+                    onClick={() => setSelectedProject(null)}
+                >
+
+                    <div className="project-modal">
+                        <h2>{selectedProject.title}</h2>
+
+                        <p>{selectedProject.description}</p>
+
+                        <h4>Technologies Used</h4>
+
+                        <p>{selectedProject.tech}</p>
+
+                        <a
+                            href={selectedProject.github}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="project-btn"
+                        >
+                            View GitHub
+                        </a>
+
+                        <button
+                            className="close-btn"
+                            onClick={() => setSelectedProject(null)}
+                        >
+                            Close
+                        </button>
+                    </div>
+
+                </div>
+
+            )}
 
         </section>
     )

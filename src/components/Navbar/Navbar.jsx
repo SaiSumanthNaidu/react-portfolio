@@ -1,85 +1,97 @@
 import { useState, useEffect } from 'react'
+import { FaMoon, FaSun } from 'react-icons/fa'
 import './Navbar.css'
 
-function Navbar() {
+function Navbar({ darkMode, setDarkMode }) {
 
     const [menuOpen, setMenuOpen] = useState(false)
-    const [scrolled, setScrolled] = useState(false)
-    const [hovered, setHovered] = useState(false)
-    const [isMobile, setIsMobile] = useState(window.innerWidth <= 768)
+    const [active, setActive] = useState('home')
 
     useEffect(() => {
 
-        const handleResize = () => {
-            setIsMobile(window.innerWidth <= 768)
-        }
+        const sections = document.querySelectorAll("section")
 
         const handleScroll = () => {
-            setScrolled(window.scrollY > 100)
+
+            sections.forEach((section) => {
+                const top = window.scrollY + 100
+                const offset = section.offsetTop - 150
+                const height = section.offsetHeight
+                const id = section.getAttribute("id")
+
+                if (top >= offset && top < offset + height) {
+                    setActive(id)
+                }
+            })
         }
 
-        window.addEventListener('scroll', handleScroll)
-        window.addEventListener('resize', handleResize)
+        window.addEventListener("scroll", handleScroll)
 
         return () => {
-            window.removeEventListener('scroll', handleScroll)
-            window.removeEventListener('resize', handleResize)
+            window.removeEventListener("scroll", handleScroll)
         }
 
     }, [])
 
     return (
-        <nav
-            className={
-                isMobile
-                    ? 'navbar active'
-                    : scrolled && !hovered
-                    ? 'navbar transparent'
-                    : 'navbar active'
-            }
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-        >
+        <nav className="navbar active">
 
             <h1 className="logo">Sai Sumanth</h1>
-
-            <div
-                className="menu-icon"
-                onClick={() => setMenuOpen(!menuOpen)}
-            >
-                ☰
-            </div>
 
             <ul className={menuOpen ? 'nav-links active' : 'nav-links'}>
 
                 <li>
-                    <a href="#" onClick={() => setMenuOpen(false)}>
+                    <a
+                        href="#home"
+                        className={active === 'home' ? 'active-link' : ''}
+                    >
                         Home
                     </a>
                 </li>
 
                 <li>
-                    <a href="#about" onClick={() => setMenuOpen(false)}>
+                    <a
+                        href="#about"
+                        className={active === 'about' ? 'active-link' : ''}
+                    >
                         About
                     </a>
                 </li>
 
                 <li>
-                    <a href="#skills" onClick={() => setMenuOpen(false)}>
+                    <a
+                        href="#skills"
+                        className={active === 'skills' ? 'active-link' : ''}
+                    >
                         Skills
                     </a>
                 </li>
 
                 <li>
-                    <a href="#projects" onClick={() => setMenuOpen(false)}>
+                    <a
+                        href="#projects"
+                        className={active === 'projects' ? 'active-link' : ''}
+                    >
                         Projects
                     </a>
                 </li>
 
                 <li>
-                    <a href="#contact" onClick={() => setMenuOpen(false)}>
+                    <a
+                        href="#contact"
+                        className={active === 'contact' ? 'active-link' : ''}
+                    >
                         Contact
                     </a>
+                </li>
+
+                <li>
+                    <button
+                        className="theme-btn"
+                        onClick={() => setDarkMode(!darkMode)}
+                    >
+                        {darkMode ? <FaSun /> : <FaMoon />}
+                    </button>
                 </li>
 
             </ul>

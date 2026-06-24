@@ -2,52 +2,44 @@ import './Stats.css'
 import { motion } from 'framer-motion'
 
 function Stats() {
-
     const stats = [
         {
-            number: "4+",
-            title: "Projects"
+            number: '5+',
+            title: 'Projects'
         },
         {
-            number: "8+",
-            title: "Skills"
+            number: '1',
+            title: 'Internship'
         },
         {
-            number: "1+",
-            title: "Experience"
+            number: '10+',
+            title: 'Skills'
         },
         {
-            number: "100%",
-            title: "Dedication"
+            number: '2025',
+            title: 'Graduate'
         }
     ]
 
     return (
-        <section className="stats">
+        <section className="stats" id="stats">
+            <h2>My Achievements</h2>
 
-            {
-                stats.map((stat, index) => (
+            <div className="stats-container">
+                {stats.map((item, index) => (
                     <motion.div
                         className="stat-card"
                         key={index}
                         initial={{ opacity: 0, y: 50 }}
                         whileInView={{ opacity: 1, y: 0 }}
-                        transition={{
-                            duration: 0.6,
-                            delay: index * 0.2
-                        }}
-                        viewport={{ once: false }}
-                        whileHover={{
-                            y: -10,
-                            scale: 1.05
-                        }}
+                        transition={{ duration: 0.6, delay: index * 0.2 }}
+                        viewport={{ once: true }}
                     >
-                        <h2>{stat.number}</h2>
-                        <p>{stat.title}</p>
+                        <h1>{item.number}</h1>
+                        <p>{item.title}</p>
                     </motion.div>
-                ))
-            }
-
+                ))}
+            </div>
         </section>
     )
 }

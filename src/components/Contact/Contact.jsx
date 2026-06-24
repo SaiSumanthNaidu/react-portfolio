@@ -1,6 +1,22 @@
 import './Contact.css'
+import { useState } from 'react'
 
 function Contact() {
+
+    const [message, setMessage] = useState(false)
+
+    const handleSubmit = (e) => {
+        e.preventDefault()
+
+        setMessage(true)
+
+        setTimeout(() => {
+            setMessage(false)
+        }, 3000)
+
+        e.target.reset()
+    }
+
     return (
         <section
             id="contact"
@@ -10,29 +26,37 @@ function Contact() {
 
             <h2>Contact Me</h2>
 
-            <p>Email: bandarusaisumanth@gmail.com</p>
+            <form onSubmit={handleSubmit}>
 
-            <p>Phone: +91 XXXXX XXXXX</p>
+                <input
+                    type="text"
+                    placeholder="Your Name"
+                    required
+                />
 
-            <p>Location: Hyderabad, Telangana</p>
+                <input
+                    type="email"
+                    placeholder="Your Email"
+                    required
+                />
 
-            <div className="contact-links">
-                <a
-                    href="https://github.com/SaiSumanthNaidu"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    GitHub
-                </a>
+                <textarea
+                    placeholder="Your Message"
+                    rows="5"
+                    required
+                ></textarea>
 
-                <a
-                    href="YOUR_LINKEDIN_LINK"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                >
-                    LinkedIn
-                </a>
-            </div>
+                <button type="submit">
+                    Send Message
+                </button>
+
+            </form>
+
+            {message && (
+                <div className="success-message">
+                    ✓ Message Sent Successfully!
+                </div>
+            )}
 
         </section>
     )

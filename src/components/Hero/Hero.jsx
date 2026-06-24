@@ -2,18 +2,18 @@ import './Hero.css'
 import profile from '../../assets/profile.png'
 import { motion } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
+import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
 
 function Hero({ name, role, experience }) {
     return (
         <motion.section
+            id="home"
             className="hero"
             data-aos="fade-up"
-        
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1 }}
         >
-
             <motion.div
                 className="hero-content"
                 initial={{ x: -80, opacity: 0 }}
@@ -44,15 +44,47 @@ function Hero({ name, role, experience }) {
                 <div className="hero-buttons">
 
                     <a href="#projects">
-                        <button>
-                            View Projects
-                        </button>
+                        <button>View Projects</button>
+                    </a>
+
+                    <a
+                        href="/resume.pdf"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <button>View Resume</button>
                     </a>
 
                     <a href="/resume.pdf" download>
-                        <button>
-                            Download Resume
-                        </button>
+                        <button>Download Resume</button>
+                    </a>
+
+                </div>
+
+                <div className="social-links">
+
+                    <a
+                        href="https://github.com/SaiSumanthNaidu"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <FaGithub />
+                    </a>
+
+                    <a
+                        href="https://www.linkedin.com/in/bandaru-sai-sumanth-949761352"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <FaLinkedin />
+                    </a>
+
+                    <a
+                        href="https://mail.google.com/mail/?view=cm&fs=1&to=bandarusaisumanth@gmail.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <FaEnvelope />
                     </a>
 
                 </div>

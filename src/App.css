@@ -1,0 +1,50 @@
+.app {
+    background: white;
+    color: black;
+    transition: 0.4s;
+}
+
+.app.dark {
+    background: #111827;
+    color: white;
+}
+
+.app.dark section {
+    background: #111827 !important;
+}
+
+.app.dark h1,
+.app.dark h2,
+.app.dark h3,
+.app.dark p {
+    color: white !important;
+}
+
+.app.dark .about-card,
+.app.dark .skill-card,
+.app.dark .project-card,
+.app.dark .certificate-card,
+.app.dark .timeline-card,
+.app.dark .stat-card {
+    background: #1f2937 !important;
+    color: white;
+}
+
+.app.dark .timeline-card h3 {
+    color: #3b82f6 !important;
+}
+
+.app.dark .timeline-card h4,
+.app.dark .timeline-card p {
+    color: white !important;
+}
+
+.app.dark .about-card p,
+.app.dark .project-card p,
+.app.dark .certificate-card p {
+    color: #d1d5db !important;
+}
+
+.app.dark footer {
+    background: #0f172a;
+}

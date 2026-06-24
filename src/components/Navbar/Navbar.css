@@ -57,6 +57,35 @@
     cursor: pointer;
 }
 
+.theme-btn {
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.theme-btn:hover {
+    color: #3b82f6;
+    transform: rotate(20deg);
+}
+
+.active-link {
+    color: #2563eb !important;
+    position: relative;
+}
+
+.active-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: -5px;
+    width: 100%;
+    height: 2px;
+    background: #2563eb;
+}
+
 @media (max-width: 768px) {
 
     .navbar {

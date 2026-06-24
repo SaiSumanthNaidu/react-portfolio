@@ -4,21 +4,21 @@ import { motion } from 'framer-motion'
 function Skills() {
 
     const skills = [
-        "Python",
-        "JavaScript",
-        "React",
-        "Django",
-        "MySQL",
-        "Git",
-        "HTML",
-        "CSS"
+        { name: "Python", level: 85 },
+        { name: "JavaScript", level: 80 },
+        { name: "React", level: 85 },
+        { name: "Django", level: 80 },
+        { name: "MySQL", level: 75 },
+        { name: "Git", level: 75 },
+        { name: "HTML", level: 90 },
+        { name: "CSS", level: 85 }
     ]
 
     return (
         <section
             id="skills"
             className="skills"
-            data-aos="fade-right"
+            data-aos="zoom-in"
         >
 
             <h2>My Skills</h2>
@@ -44,11 +44,30 @@ function Skills() {
                             delay: index * 0.1
                         }}
                         whileHover={{
-                            scale: 1.1,
+                            scale: 1.05,
                             y: -8
                         }}
                     >
-                        {skill}
+                        <div className="skill-header">
+                            <span>{skill.name}</span>
+                            <span>{skill.level}%</span>
+                        </div>
+
+                        <div className="progress-bar">
+                            <motion.div
+                                className="progress-fill"
+                                initial={{ width: 0 }}
+                                whileInView={{
+                                    width: `${skill.level}%`
+                                }}
+                                viewport={{ once: true }}
+                                transition={{
+                                    duration: 1.5,
+                                    delay: index * 0.2
+                                }}
+                            />
+                        </div>
+
                     </motion.div>
 
                 ))}
