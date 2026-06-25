@@ -1,16 +1,18 @@
 import { useState, useEffect } from 'react'
+
 import ScrollProgress from './components/ScrollProgress/ScrollProgress'
 import BackToTop from './components/BackToTop/BackToTop'
 import Loader from './components/Loader/Loader'
 
 import Navbar from './components/Navbar/Navbar'
 import Hero from './components/Hero/Hero'
-import Stats from './components/Stats/Stats'
-import Timeline from './components/Timeline/Timeline'
-import Certificates from './components/Certificates/Certificates'
 import About from './components/About/About'
+import Timeline from './components/Timeline/Timeline'
+import Experience from './components/Experience/Experience'
 import Skills from './components/Skills/Skills'
+import Stats from './components/Stats/Stats'
 import Projects from './components/Projects/Projects'
+import Certificates from './components/Certificates/Certificates'
 import Contact from './components/Contact/Contact'
 import Footer from './components/Footer/Footer'
 
@@ -42,41 +44,43 @@ function App() {
     }
 
     return (
-    <div className={darkMode ? 'app dark' : 'app'}>
+        <div className={`app ${darkMode ? "dark" : "light"}`}>
 
-      <ScrollProgress />
+            <ScrollProgress />
 
-      <BackToTop />
+            <BackToTop />
 
-      <Navbar
-          darkMode={darkMode}
-          setDarkMode={setDarkMode}
-      />
+            <Navbar
+                darkMode={darkMode}
+                setDarkMode={setDarkMode}
+            />
 
-      <Hero
-          name="Bandaru Sai Sumanth"
-          role="Python Full Stack Developer"
-          experience="Passionate Full Stack Developer specializing in Python, Django, React, and modern web technologies, building scalable and user-friendly applications."
-      />
+            <Hero
+                name="Bandaru Sai Sumanth"
+                role="Python Full Stack Developer"
+                experience="Passionate Full Stack Developer specializing in Python, Django, React, and modern web technologies, building scalable and user-friendly applications."
+            />
 
-      <Stats />
+            <About />
 
-      <Timeline />
+            <Timeline />
 
-      <Certificates />
+            <Experience />
 
-      <About />
+            <Skills />
 
-      <Skills />
+            <Stats />
 
-      <Projects />
+            <Projects />
 
-      <Contact />
+            <Certificates />
 
-      <Footer />
+            <Contact />
 
-    </div>
-  )
+            <Footer />
+
+        </div>
+    )
 }
 
 export default App

@@ -27,6 +27,13 @@ function Certificates() {
         },
 
         {
+            icon: <FaBriefcase />,
+            title: "Full Stack Developer Internship",
+            organization: "Orivyn Tech Innovations Pvt Ltd",
+            year: "2026"
+        },
+
+        {
             icon: <FaCertificate />,
             title: "Solar Internship",
             organization: "Mahathi Engineering Industries",
@@ -52,7 +59,7 @@ function Certificates() {
     return (
         <section id="certificates" className="certificates">
 
-            <h2>Certificates & Internships</h2>
+            <h2>Certificates & Achievements</h2>
 
             <div className="certificate-container">
 

@@ -7,3 +7,22 @@
 body {
     font-family: Arial, sans-serif;
 }
+
+.dark-theme {
+    background: linear-gradient(
+        135deg,
+        #020617 0%,
+        #07152f 50%,
+        #020617 100%
+    );
+    color: #ffffff;
+}
+
+.dark-theme section {
+    background:
+        radial-gradient(
+            circle at left,
+            rgba(37,99,235,0.12),
+            transparent 40%
+        );
+}

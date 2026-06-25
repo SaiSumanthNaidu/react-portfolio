@@ -1,50 +1,87 @@
 .app {
-    background: white;
-    color: black;
-    transition: 0.4s;
+    min-height: 100vh;
+    background: #f8fafc;
+    color: #111827;
+    transition: 0.4s ease;
 }
 
 .app.dark {
-    background: #111827;
+    background: #020617;
     color: white;
 }
 
+/* Global Dark Mode */
+
 .app.dark section {
-    background: #111827 !important;
+    background:
+        radial-gradient(
+            circle at 10% 15%,
+            rgba(37,99,235,0.18),
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 85% 25%,
+            rgba(96,165,250,0.12),
+            transparent 25%
+        ),
+
+        linear-gradient(
+            135deg,
+            #020617,
+            #07152f,
+            #020617
+        ) !important;
 }
 
 .app.dark h1,
 .app.dark h2,
 .app.dark h3,
-.app.dark p {
+.app.dark h4 {
     color: white !important;
 }
+
+.app.dark p,
+.app.dark span,
+.app.dark li {
+    color: #cbd5e1 !important;
+}
+
+/* Universal Glass Cards */
 
 .app.dark .about-card,
 .app.dark .skill-card,
 .app.dark .project-card,
-.app.dark .certificate-card,
+.app.dark .experience-card,
 .app.dark .timeline-card,
-.app.dark .stat-card {
-    background: #1f2937 !important;
+.app.dark .certificate-card,
+.app.dark .stat-card,
+.app.dark .contact-card,
+.app.dark form {
+    background: rgba(30,41,59,0.65) !important;
+
+    backdrop-filter: blur(20px);
+
+    border: 1px solid rgba(96,165,250,0.15);
+
+    box-shadow:
+        0 10px 35px rgba(0,0,0,0.3);
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2563eb;
+    border-radius: 20px;
+}
+
+::selection {
+    background: #2563eb;
     color: white;
-}
-
-.app.dark .timeline-card h3 {
-    color: #3b82f6 !important;
-}
-
-.app.dark .timeline-card h4,
-.app.dark .timeline-card p {
-    color: white !important;
-}
-
-.app.dark .about-card p,
-.app.dark .project-card p,
-.app.dark .certificate-card p {
-    color: #d1d5db !important;
-}
-
-.app.dark footer {
-    background: #0f172a;
 }

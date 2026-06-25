@@ -1,32 +1,27 @@
 import './Stats.css'
 import { motion } from 'framer-motion'
-import {
-    FaCode,
-    FaBriefcase,
-    FaGraduationCap,
-    FaLaptopCode
-} from 'react-icons/fa'
+import CountUp from "react-countup"
+
+<h1>
+    <CountUp end={9} duration={3} />+
+</h1>
 
 function Stats() {
 
     const stats = [
         {
-            icon: <FaCode />,
             number: '9+',
             title: 'Projects'
         },
         {
-            icon: <FaBriefcase />,
-            number: '1 Year',
-            title: 'Internship'
+            number: '2',
+            title: 'Internships'
         },
         {
-            icon: <FaLaptopCode />,
-            number: '10+',
-            title: 'Technologies'
+            number: '15+',
+            title: 'Skills'
         },
         {
-            icon: <FaGraduationCap />,
             number: '2025',
             title: 'Graduate'
         }
@@ -35,7 +30,14 @@ function Stats() {
     return (
         <section className="stats" id="stats">
 
-            <h2>My Achievements</h2>
+            <motion.h2
+                initial={{ opacity: 0, y: -30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6 }}
+                viewport={{ once: true }}
+            >
+                My Achievements
+            </motion.h2>
 
             <div className="stats-container">
 
@@ -57,11 +59,17 @@ function Stats() {
                         }}
                     >
 
-                        <div className="stat-icon">
-                            {item.icon}
-                        </div>
-
-                        <h1>{item.number}</h1>
+                        <motion.h1
+                            initial={{ scale: 0 }}
+                            whileInView={{ scale: 1 }}
+                            transition={{
+                                duration: 0.5,
+                                delay: index * 0.2
+                            }}
+                            viewport={{ once: true }}
+                        >
+                            {item.number}
+                        </motion.h1>
 
                         <p>{item.title}</p>
 

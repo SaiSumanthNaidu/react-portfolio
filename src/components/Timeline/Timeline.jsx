@@ -3,60 +3,52 @@ import { motion } from 'framer-motion'
 
 function Timeline() {
 
-    const experiences = [
-
+    const education = [
         {
-            year: "2025 - 2026",
-            title: "Associate Engineer Intern",
-            company: "TechIRavan, Hyderabad"
+            year: "2022 - 2025",
+            title: "B.Tech",
+            institute: "Aurora's Technological and Research Institute"
         },
-
         {
-            year: "2025",
-            title: "B.Tech Graduate",
-            company: "Aurora's Technological and Research Institute"
+            year: "2019 - 2022",
+            title: "Diploma Mechanical Engineering",
+            institute: "Government Polytechnic Yadagirigutta"
         },
-
         {
-            year: "2021 - 2022",
-            title: "Solar Panels Intern",
-            company: "Mahathi Engineering Industries"
+            year: "2018 - 2019",
+            title: "SSC",
+            institute: "VijayaRatna High School"
         }
-
     ]
 
     return (
-        <section id="timeline" className="timeline">
+        <section className="timeline" id="education">
 
-            <h2>Experience & Education</h2>
+            <h2>Education Journey</h2>
 
             <div className="timeline-container">
 
-                {experiences.map((item, index) => (
+                {education.map((item, index) => (
 
                     <motion.div
-                        className="timeline-item"
+                        className="timeline-card"
                         key={index}
-                        initial={{ opacity: 0, x: -100 }}
+                        initial={{ opacity: 0, x: -50 }}
                         whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
                         transition={{
-                            duration: 0.7,
+                            duration: 0.6,
                             delay: index * 0.2
                         }}
+                        viewport={{ once: true }}
                     >
 
-                        <div className="timeline-dot"></div>
-
-                        <div className="timeline-card">
-
-                            <h3>{item.year}</h3>
-
-                            <h4>{item.title}</h4>
-
-                            <p>{item.company}</p>
-
+                        <div className="timeline-year">
+                            {item.year}
                         </div>
+
+                        <h3>{item.title}</h3>
+
+                        <p>{item.institute}</p>
 
                     </motion.div>
 

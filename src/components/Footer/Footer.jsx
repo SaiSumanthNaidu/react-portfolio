@@ -34,7 +34,7 @@ function Footer() {
             </div>
 
             <p className="copyright">
-                © 2026 Sai Sumanth. All Rights Reserved.
+                © {new Date().getFullYear()} Sai Sumanth. All Rights Reserved.
             </p>
 
         </footer>

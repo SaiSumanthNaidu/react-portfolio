@@ -2,30 +2,35 @@ import './Hero.css'
 import profile from '../../assets/profile.png'
 import { motion } from 'framer-motion'
 import { TypeAnimation } from 'react-type-animation'
-import { FaGithub, FaLinkedin, FaEnvelope } from 'react-icons/fa'
-import BackgroundShapes from '../BackgroundShapes/BackgroundShapes'
+import {
+    FaGithub,
+    FaLinkedin,
+    FaEnvelope
+} from 'react-icons/fa'
 
-function Hero({ name, role, experience }) {
+function Hero({ experience }) {
+
     return (
-        <motion.section
-            id="home"
-            className="hero"
-            data-aos="fade-up"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
-        >
-            <BackgroundShapes />
+        <section id="home" className="hero">
 
             <motion.div
                 className="hero-content"
-                initial={{ x: -80, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
+                initial={{ opacity: 0, x: -80 }}
+                animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1 }}
             >
+
+                <div className="hero-badge">
+                    Available for Opportunities
+                </div>
+
                 <h3>Hello, I'm</h3>
 
-                <h1>{name}</h1>
+                <h1>
+                    Bandaru Sai
+                    <br />
+                    Sumanth
+                </h1>
 
                 <TypeAnimation
                     sequence={[
@@ -34,6 +39,8 @@ function Hero({ name, role, experience }) {
                         'React Developer',
                         2000,
                         'Django Developer',
+                        2000,
+                        'REST API Developer',
                         2000,
                     ]}
                     wrapper="h2"
@@ -47,7 +54,9 @@ function Hero({ name, role, experience }) {
                 <div className="hero-buttons">
 
                     <a href="#projects">
-                        <button>View Projects</button>
+                        <button className="primary-btn">
+                            View Projects
+                        </button>
                     </a>
 
                     <a
@@ -55,11 +64,15 @@ function Hero({ name, role, experience }) {
                         target="_blank"
                         rel="noopener noreferrer"
                     >
-                        <button>View Resume</button>
+                        <button className="secondary-btn">
+                            View Resume
+                        </button>
                     </a>
 
                     <a href="/resume.pdf" download>
-                        <button>Download Resume</button>
+                        <button className="secondary-btn">
+                            Download CV
+                        </button>
                     </a>
 
                 </div>
@@ -82,30 +95,29 @@ function Hero({ name, role, experience }) {
                         <FaLinkedin />
                     </a>
 
-                    <a
-                        href="https://mail.google.com/mail/?view=cm&fs=1&to=bandarusaisumanth@gmail.com"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                    >
+                    <a href="mailto:bandarusaisumanth@gmail.com">
                         <FaEnvelope />
                     </a>
 
                 </div>
+
             </motion.div>
 
             <motion.div
                 className="hero-image"
-                initial={{ x: 80, opacity: 0, scale: 0.8 }}
-                animate={{ x: 0, opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, x: 80 }}
+                animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 1.2 }}
-                whileHover={{
-                    scale: 1.05
-                }}
             >
-                <img src={profile} alt="Profile" />
+                <div className="image-glow"></div>
+
+                <img
+                    src={profile}
+                    alt="Bandaru Sai Sumanth"
+                />
             </motion.div>
 
-        </motion.section>
+        </section>
     )
 }
 

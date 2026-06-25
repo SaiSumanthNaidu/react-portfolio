@@ -1,49 +1,90 @@
 import { useState, useEffect } from 'react'
-import { FaMoon, FaSun } from 'react-icons/fa'
+import {
+    FaMoon,
+    FaSun,
+    FaBars,
+    FaTimes
+} from 'react-icons/fa'
+
 import './Navbar.css'
 
 function Navbar({ darkMode, setDarkMode }) {
 
     const [menuOpen, setMenuOpen] = useState(false)
     const [active, setActive] = useState('home')
+    const [scrolled, setScrolled] = useState(false)
 
     useEffect(() => {
 
-        const sections = document.querySelectorAll("section")
+        const sections = document.querySelectorAll('section')
 
         const handleScroll = () => {
 
-            sections.forEach((section) => {
-                const top = window.scrollY + 100
-                const offset = section.offsetTop - 150
-                const height = section.offsetHeight
-                const id = section.getAttribute("id")
+            setScrolled(window.scrollY > 50)
 
-                if (top >= offset && top < offset + height) {
+            sections.forEach((section) => {
+
+                const top = window.scrollY + 150
+                const offset = section.offsetTop
+                const height = section.offsetHeight
+                const id = section.getAttribute('id')
+
+                if (
+                    top >= offset &&
+                    top < offset + height
+                ) {
                     setActive(id)
                 }
             })
         }
 
-        window.addEventListener("scroll", handleScroll)
+        window.addEventListener('scroll', handleScroll)
 
         return () => {
-            window.removeEventListener("scroll", handleScroll)
+            window.removeEventListener(
+                'scroll',
+                handleScroll
+            )
         }
 
     }, [])
 
+    const closeMenu = () => {
+        setMenuOpen(false)
+    }
+
     return (
-        <nav className="navbar active">
 
-            <h1 className="logo">Sai Sumanth</h1>
+        <nav className={scrolled ? 'navbar scrolled' : 'navbar'}>
 
-            <ul className={menuOpen ? 'nav-links active' : 'nav-links'}>
+            <h1 className="logo">
+                Sai Sumanth
+            </h1>
+
+            <div
+                className="menu-icon"
+                onClick={() => setMenuOpen(!menuOpen)}
+            >
+                {menuOpen ? <FaTimes /> : <FaBars />}
+            </div>
+
+            <ul
+                className={
+                    menuOpen
+                        ? 'nav-links active'
+                        : 'nav-links'
+                }
+            >
 
                 <li>
                     <a
                         href="#home"
-                        className={active === 'home' ? 'active-link' : ''}
+                        onClick={closeMenu}
+                        className={
+                            active === 'home'
+                                ? 'active-link'
+                                : ''
+                        }
                     >
                         Home
                     </a>
@@ -52,7 +93,12 @@ function Navbar({ darkMode, setDarkMode }) {
                 <li>
                     <a
                         href="#about"
-                        className={active === 'about' ? 'active-link' : ''}
+                        onClick={closeMenu}
+                        className={
+                            active === 'about'
+                                ? 'active-link'
+                                : ''
+                        }
                     >
                         About
                     </a>
@@ -61,7 +107,12 @@ function Navbar({ darkMode, setDarkMode }) {
                 <li>
                     <a
                         href="#skills"
-                        className={active === 'skills' ? 'active-link' : ''}
+                        onClick={closeMenu}
+                        className={
+                            active === 'skills'
+                                ? 'active-link'
+                                : ''
+                        }
                     >
                         Skills
                     </a>
@@ -70,7 +121,12 @@ function Navbar({ darkMode, setDarkMode }) {
                 <li>
                     <a
                         href="#projects"
-                        className={active === 'projects' ? 'active-link' : ''}
+                        onClick={closeMenu}
+                        className={
+                            active === 'projects'
+                                ? 'active-link'
+                                : ''
+                        }
                     >
                         Projects
                     </a>
@@ -79,7 +135,12 @@ function Navbar({ darkMode, setDarkMode }) {
                 <li>
                     <a
                         href="#contact"
-                        className={active === 'contact' ? 'active-link' : ''}
+                        onClick={closeMenu}
+                        className={
+                            active === 'contact'
+                                ? 'active-link'
+                                : ''
+                        }
                     >
                         Contact
                     </a>
@@ -88,9 +149,13 @@ function Navbar({ darkMode, setDarkMode }) {
                 <li>
                     <button
                         className="theme-btn"
-                        onClick={() => setDarkMode(!darkMode)}
+                        onClick={() =>
+                            setDarkMode(!darkMode)
+                        }
                     >
-                        {darkMode ? <FaSun /> : <FaMoon />}
+                        {darkMode
+                            ? <FaSun />
+                            : <FaMoon />}
                     </button>
                 </li>
 
